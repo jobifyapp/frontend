@@ -1,0 +1,12 @@
+{
+    "name": "@jobify/frontend",
+    "description": "",
+    "author": "Emerson R.",
+    "version": "1.0.0-alpha.1",
+    "license": "GPL-3.0",
+    "scripts": {
+        "start": "node server.js",
+        "test": "jest",
+        "build": "webpack --mode production"
+    }
+}
