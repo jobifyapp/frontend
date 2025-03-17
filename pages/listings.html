@@ -1,7 +1,368 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
+        <meta charset="utf-8">
         <title>Jobify × Listings</title>
-        <link rel="stylesheet" href="../static/css/style.css">
+        <!--FILL IN THE FAVICON-->
+        <link rel="icon" type="image/x-icon" sizes="32x32" href="">
+        <meta name="author" content="Emerson Reinhard">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     </head>
+    <body>
+        <div id="banner"></div>
+        <div id="cookies">
+            <div class="disclaimer">
+                <div class="banner">
+                    <div class="items">
+                        <span class="text">🍪 By using Jobify's services, you agree to our <a href='#'>cookie policy</a>.</span>
+                        <button class="close" id="cookies-close">
+                            <i class="far fa-times-circle"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="notifications"></div>
+        <div id="modals">
+            <div id="contactModal" class="modalWrapper hidden">
+                <div class="modal">
+                    <div class="title">Contact</div>
+                    <div class="text">
+                        This contact system will send a message <strong>directly</strong> to the counselors. All tickets are attached to your account except for tip lines when the anonymous option is selected.
+                        <br><br>
+                        Please <span class="accent-text">do not send</span> troll tickets, this may lead to repercussions beyond the website. In addition to this, do not boost your ticket, we will get back to you as soon as possible.
+                    </div>
+                    <div class="buttons">
+                        <button id="question" class="button">
+                            <div class="icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="textgroup">
+                                <div class="text">Question</div>
+                            </div>
+                        </button>
+                        <button id="arrangeMeeting" class="button">
+                            <div class="icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="textgroup">
+                                <div class="text">Arrange Meeting</div>
+                            </div>
+                        </button>
+                        <button id="mentalHealth" class="button">
+                            <div class="icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="textgroup">
+                                <div class="text">Mental Health Support</div>
+                            </div>
+                        </button>
+                        <button id="relationshipCounseling" class="button">
+                            <div class="icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="textgroup">
+                                <div class="text">Relationship Counseling</div>
+                            </div>
+                        </button>
+                        <button id="businessInquiry" class="button">
+                            <div class="icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="textgroup">
+                                <div class="text">Business Inquiry</div>
+                            </div>
+                        </button>
+                        <button id="tipLine" class="button">
+                            <div class="icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="textgroup">
+                                <div class="text">Tip Line</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="root">
+            <div class="navigation">
+                <div class="container">
+                    <div class="left-items">
+                        <div class="logo" onclick="window.location.href = 'localhost:3000/'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#646669">
+                                <path d="M9.16488 17.6505C8.92513 17.8743 8.73958 18.0241 8.54996 18.1336C7.62175 18.6695 6.47816 18.6695 5.54996 18.1336C5.20791 17.9361 4.87912 17.6073 4.22153 16.9498C3.56394 16.2922 3.23514 15.9634 3.03767 15.6213C2.50177 14.6931 2.50177 13.5495 3.03767 12.6213C3.23514 12.2793 3.56394 11.9505 4.22153 11.2929L7.04996 8.46448C7.70755 7.80689 8.03634 7.47809 8.37838 7.28062C9.30659 6.74472 10.4502 6.74472 11.3784 7.28061C11.7204 7.47809 12.0492 7.80689 12.7068 8.46448C13.3644 9.12207 13.6932 9.45086 13.8907 9.7929C14.4266 10.7211 14.4266 11.8647 13.8907 12.7929C13.7812 12.9825 13.6314 13.1681 13.4075 13.4078M10.5919 10.5922C10.368 10.8319 10.2182 11.0175 10.1087 11.2071C9.57284 12.1353 9.57284 13.2789 10.1087 14.2071C10.3062 14.5492 10.635 14.878 11.2926 15.5355C11.9502 16.1931 12.279 16.5219 12.621 16.7194C13.5492 17.2553 14.6928 17.2553 15.621 16.7194C15.9631 16.5219 16.2919 16.1931 16.9495 15.5355L19.7779 12.7071C20.4355 12.0495 20.7643 11.7207 20.9617 11.3787C21.4976 10.4505 21.4976 9.30689 20.9617 8.37869C20.7643 8.03665 20.4355 7.70785 19.7779 7.05026C19.1203 6.39267 18.7915 6.06388 18.4495 5.8664C17.5212 5.3305 16.3777 5.3305 15.4495 5.8664C15.2598 5.97588 15.0743 6.12571 14.8345 6.34955" stroke="#646669" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="nav-left">
+                            <a href="/listings">Listings</a>
+                            <a href="/resources">Resources</a>
+                        </div>
+                    </div>
+                    <div class="right-items">
+                        <!--LANGUAGE DROPDOWN GOES HERE-->
+                        <button id="contact-open" class="contact-button">Contact</button>
+                        <div class="nav-right">
+                            <button class="pill-button sign-up">Register</button>
+                            <butotn class="pill-button log-in">Log In</butotn>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="listings">
+                <h1>Select a listing</h1>
+                <div class="filterbar">
+                    <div class="openmodal">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <div class="selected">
+                        <div class="option">
+                            <span>NEW (4+)</span>
+                        </div>
+                        <div class="option">
+                            <span>FAST FOOD (3+)</span>
+                        </div>
+                        <div class="option">
+                            <span>VOLUNTEER (3+)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="options">
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://media.licdn.com/dms/image/v2/C4E0BAQHNBvsVI1j06g/company-logo_200_200/company-logo_200_200/0/1630624665543/subway_logo?e=2147483647&v=beta&t=MUR_U9A1IEyjdn-ddEg8LYvPJCXNduFoaPzL5OvwbCQ') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://media.licdn.com/dms/image/v2/C4E0BAQHNBvsVI1j06g/company-logo_200_200/company-logo_200_200/0/1630624665543/subway_logo?e=2147483647&v=beta&t=MUR_U9A1IEyjdn-ddEg8LYvPJCXNduFoaPzL5OvwbCQ" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Subway</h3>
+                                    <div class="city">Fulton, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/McDonald%27s_square_2020.svg/640px-McDonald%27s_square_2020.svg.png') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/McDonald%27s_square_2020.svg/640px-McDonald%27s_square_2020.svg.png" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">McDonalds</h3>
+                                    <div class="city">Kingdom City, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAE20lEQVRIib2WXUwUVxTH//fOzM4uCxVdcLMIqFGLtCUtsWoiiikV0oYmbaCNDTYxadQ2FTTqg9pSbRO1vpCmUUxomiZGy4uBSOJHYw0N2KQGtLbFRkkxweVjg7Ci2S92Pu7pwwIyQ2GxTXueZmfO/H97zpl7758RESaipS3c3Ba5eFcPxgkMTxcEj4OV5ysVG91vbkydvM0SgHv92vLdQwgTXAwSnlp9ggETiBFSWc9X3mXZDgB8XL0qAALSGORZ1YmBZn7MABlIYyAsrwrc69fGK2CVfaAEa9bQlMWpYQD3w6lw6EmSBcBATTm8pS2MMCVX1+W6da29e1f07l1Rt64VupwknwNhamkLS8rS3b+PiOSAuNqyeassXDCeKcz6+ei17VCMJK9ITNEEv3RHh5RMPYEw5tsukgFw6Y7Og9rcvkhGD6M5YAaY8TCaA0ZzeAVBjbhd3ZQQUxFXoCk2QDDiAwzACEZ8doCmIK4gpsK0doPZem/yzTl+OlhAtb4zpU2IuCAmEhgNhb2JCobC3icAwRFxnS1tolofHSzYnOOHadG0AjTl+KY6MBPa4vdWVw/WbM1LiYyXwmkg5AWLg8UHQl5wSuTnpUQGa7ZuWV0NbTGYeXxTna10K4Dh0VgmeBBg0Jf45t28uzOvtrADkRRw0fUgF0oMSqzrQS64QCSltrDj7s4837yb0JcADDz4aCzT1nMJz+2Z8ktc+HNtaXbU62kFOIQbYl5JfkPRQteZ22s7hr2Z9EJn71uf3SiCKV15p35b0YfQc0EKpBAcga7+beXN+0PMshcwVPotRGKIOddnBY4VN27IOw7TDTEfrv6Shls/jmSO91cSr2QMt35QiFg2+CikyLXuAx+3V/006INrzDb/aYDJ0cUVT2rkxIYLlQX1fY9eWv7tl5aVpcs97+/JSf+1qWtnzbU3gmE3VB1cTFeaATBZjS7DkMEEXHH705gK4pANKMYsyyLpFvFvYwaA4IipHllvLDsX37++Z8cu++6myz07dsX3r28sO+eRdcTUJyvGGv/zkIktcmiXK78oyP0GxgKYaQBB9f/wx+Gypo/A6GTx9wCq218DsSuVp0qf/xzxXIBBCkF+2OXf9nrTwQHNMZVhXQdxtf3dYy9mfw19CUgFH4M0+Onllu1X3oaqV+ffPlxeuWbp+eBIWcdoxpnf1pnRopJnGwAnRCrMdG96a0mW3vDLq5DNGWZASHcOQ3gAgtIbeLxqZX33kVtr4I5C8IKFfugu6K6ChX4IDnf0yK01K+u7A49XQekFCMKT7hyG9YOyAhz6gav7QBIc9892nsw6cbo76h4/HQVblDYEUkHqorQhCJbI7466s06cPtt5Eo77IOnA1X2203TakE0JmgwuwGBJHVM7txx9ObcRwA1/1ervPoFzysrQFBAgOBwGJHOqngyy2gjJhMuSMdE95nEHABmAxx2we4uZPACBe1SGOZxOILYgpQ8kg+QFKX2zmZcp6h6V8fJ8BX/3j6eHKo/aLpKEifJ8hVcUuxGbQwmKfur6ITj74ew/df0QlGS+CECMKord/7nxYkQ0bh0zeHJGovVJLYUARkRPo29ZtoMDWJbt6Gn0gQEhgoHZZs5oNnUCDCBEYEioY9JdJ6KlLdzcHrl455/ad5WV5ysVxRb7/hc7PDjwM4Ui4QAAAABJRU5ErkJggg==') center center / cover no-repeat"></div>
+                                <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAE20lEQVRIib2WXUwUVxTH//fOzM4uCxVdcLMIqFGLtCUtsWoiiikV0oYmbaCNDTYxadQ2FTTqg9pSbRO1vpCmUUxomiZGy4uBSOJHYw0N2KQGtLbFRkkxweVjg7Ci2S92Pu7pwwIyQ2GxTXueZmfO/H97zpl7758RESaipS3c3Ba5eFcPxgkMTxcEj4OV5ysVG91vbkydvM0SgHv92vLdQwgTXAwSnlp9ggETiBFSWc9X3mXZDgB8XL0qAALSGORZ1YmBZn7MABlIYyAsrwrc69fGK2CVfaAEa9bQlMWpYQD3w6lw6EmSBcBATTm8pS2MMCVX1+W6da29e1f07l1Rt64VupwknwNhamkLS8rS3b+PiOSAuNqyeassXDCeKcz6+ei17VCMJK9ITNEEv3RHh5RMPYEw5tsukgFw6Y7Og9rcvkhGD6M5YAaY8TCaA0ZzeAVBjbhd3ZQQUxFXoCk2QDDiAwzACEZ8doCmIK4gpsK0doPZem/yzTl+OlhAtb4zpU2IuCAmEhgNhb2JCobC3icAwRFxnS1tolofHSzYnOOHadG0AjTl+KY6MBPa4vdWVw/WbM1LiYyXwmkg5AWLg8UHQl5wSuTnpUQGa7ZuWV0NbTGYeXxTna10K4Dh0VgmeBBg0Jf45t28uzOvtrADkRRw0fUgF0oMSqzrQS64QCSltrDj7s4837yb0JcADDz4aCzT1nMJz+2Z8ktc+HNtaXbU62kFOIQbYl5JfkPRQteZ22s7hr2Z9EJn71uf3SiCKV15p35b0YfQc0EKpBAcga7+beXN+0PMshcwVPotRGKIOddnBY4VN27IOw7TDTEfrv6Shls/jmSO91cSr2QMt35QiFg2+CikyLXuAx+3V/006INrzDb/aYDJ0cUVT2rkxIYLlQX1fY9eWv7tl5aVpcs97+/JSf+1qWtnzbU3gmE3VB1cTFeaATBZjS7DkMEEXHH705gK4pANKMYsyyLpFvFvYwaA4IipHllvLDsX37++Z8cu++6myz07dsX3r28sO+eRdcTUJyvGGv/zkIktcmiXK78oyP0GxgKYaQBB9f/wx+Gypo/A6GTx9wCq218DsSuVp0qf/xzxXIBBCkF+2OXf9nrTwQHNMZVhXQdxtf3dYy9mfw19CUgFH4M0+Onllu1X3oaqV+ffPlxeuWbp+eBIWcdoxpnf1pnRopJnGwAnRCrMdG96a0mW3vDLq5DNGWZASHcOQ3gAgtIbeLxqZX33kVtr4I5C8IKFfugu6K6ChX4IDnf0yK01K+u7A49XQekFCMKT7hyG9YOyAhz6gav7QBIc9892nsw6cbo76h4/HQVblDYEUkHqorQhCJbI7466s06cPtt5Eo77IOnA1X2203TakE0JmgwuwGBJHVM7txx9ObcRwA1/1ervPoFzysrQFBAgOBwGJHOqngyy2gjJhMuSMdE95nEHABmAxx2we4uZPACBe1SGOZxOILYgpQ8kg+QFKX2zmZcp6h6V8fJ8BX/3j6eHKo/aLpKEifJ8hVcUuxGbQwmKfur6ITj74ew/df0QlGS+CECMKord/7nxYkQ0bh0zeHJGovVJLYUARkRPo29ZtoMDWJbt6Gn0gQEhgoHZZs5oNnUCDCBEYEioY9JdJ6KlLdzcHrl455/ad5WV5ysVxRb7/hc7PDjwM4Ui4QAAAABJRU5ErkJggg==" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Walmart</h3>
+                                    <div class="city">Mexico, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1200px-Chipotle_Mexican_Grill_logo.svg.png') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1200px-Chipotle_Mexican_Grill_logo.svg.png" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Chipotle</h3>
+                                    <div class="city">Columbia, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://static.wixstatic.com/media/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://static.wixstatic.com/media/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Ice Cream Factory</h3>
+                                    <div class="city">Jefferson City, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://pbs.twimg.com/profile_images/987417355188883457/BNfarabT_400x400.jpg') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://pbs.twimg.com/profile_images/987417355188883457/BNfarabT_400x400.jpg" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Chick-Fil-A</h3>
+                                    <div class="city">Wentzville, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaeEyZ_vqOHj0e-nZDe6mPOhP167E3rEatw&s') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaeEyZ_vqOHj0e-nZDe6mPOhP167E3rEatw&s" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Casey's</h3>
+                                    <div class="city">Auxvasse, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="option">
+                            <div class="splash">
+                                <div class="background" style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTytx2fZvFlDk9V5XgqzR-niU196AjG6jQ4vg&s') center center / cover no-repeat"></div>
+                                <img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTytx2fZvFlDk9V5XgqzR-niU196AjG6jQ4vg&s" size="80" radius="40" alt="Logo of {x}">
+                            </div>
+                            <div class="info">
+                                <div class="details">
+                                    <h3 class="name">Crane's Country Store</h3>
+                                    <div class="city">Williamsburg, MO</div>
+                                </div>
+                                <button class="open">
+                                    <div class="apply">
+                                        <span>Apply</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="footer">
+                    <div class="blurb">
+                        <div class="logo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#646669">
+                                <path d="M9.16488 17.6505C8.92513 17.8743 8.73958 18.0241 8.54996 18.1336C7.62175 18.6695 6.47816 18.6695 5.54996 18.1336C5.20791 17.9361 4.87912 17.6073 4.22153 16.9498C3.56394 16.2922 3.23514 15.9634 3.03767 15.6213C2.50177 14.6931 2.50177 13.5495 3.03767 12.6213C3.23514 12.2793 3.56394 11.9505 4.22153 11.2929L7.04996 8.46448C7.70755 7.80689 8.03634 7.47809 8.37838 7.28062C9.30659 6.74472 10.4502 6.74472 11.3784 7.28061C11.7204 7.47809 12.0492 7.80689 12.7068 8.46448C13.3644 9.12207 13.6932 9.45086 13.8907 9.7929C14.4266 10.7211 14.4266 11.8647 13.8907 12.7929C13.7812 12.9825 13.6314 13.1681 13.4075 13.4078M10.5919 10.5922C10.368 10.8319 10.2182 11.0175 10.1087 11.2071C9.57284 12.1353 9.57284 13.2789 10.1087 14.2071C10.3062 14.5492 10.635 14.878 11.2926 15.5355C11.9502 16.1931 12.279 16.5219 12.621 16.7194C13.5492 17.2553 14.6928 17.2553 15.621 16.7194C15.9631 16.5219 16.2919 16.1931 16.9495 15.5355L19.7779 12.7071C20.4355 12.0495 20.7643 11.7207 20.9617 11.3787C21.4976 10.4505 21.4976 9.30689 20.9617 8.37869C20.7643 8.03665 20.4355 7.70785 19.7779 7.05026C19.1203 6.39267 18.7915 6.06388 18.4495 5.8664C17.5212 5.3305 16.3777 5.3305 15.4495 5.8664C15.2598 5.97588 15.0743 6.12571 14.8345 6.34955" stroke="#646669" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="motto">
+                            Bridging talent to oppurtunity.
+                        </div>
+                    </div>
+                    <div class="hyperlinks">
+                        <div class="column">
+                            <div class="header">Socials</div>
+                            <ul class="links">
+                                <div>
+                                    <a class="link" href="/">YouTube</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Facebook</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Twitter</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Instagram</a>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <div class="header">Policies</div>
+                            <ul class="links">
+                                <div>
+                                    <a class="link" href="/">Terms of Service</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Privacy Policy</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Community Guidelines</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Security Policy</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Cookie Policy</a>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <div class="header">Company</div>
+                            <ul class="links">
+                                <div>
+                                    <a class="link" href="/">Mission Statement</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/">Our Team</a>
+                                </div>
+                                <div>
+                                    <a class="link" href="/"></a>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <div class="info">Copyright © 2025 Jobify Developers</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="../static/js/script.js"></script>
+    </body>
 </html>
+
+<!--
+<div class="notif notice" id="0" style="opacity: 0.36;">
+    <div class="message"><div class="title"><div class="icon"><i class="fas fa-info-circle"></i></div>Notice</div>Test invalid - AFK detected</div>
+</div>
+-->

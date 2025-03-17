@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Login × Jobify</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" type="image/x-icon" href="/static/media/jobify.ico">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="root">
+            <div class="login-screen">
+                <img class="logowithtext" src="/static/media/logowithtext.png">
+                <div class="wrapper">
+                    <div style="opacity: 1; transform: scale(1) translateY(0px) translateZ(0px)">
+                        <div>
+                            <form class="login-modal" id="login-modal">
+                                <div class="main-container">
+                                    <div class="header">
+                                        <h1>Welcome back!</h1>
+                                        <div class="subtext">We're so excited to see you again!</div>
+                                    </div>
+                                    <div class="block">
+                                        <div class="email">
+                                            <div class="field-wrapper">
+                                                <label class="input-label">Email
+                                                    <span class="required">*</span>
+                                                </label>
+                                                <div class="input-wrapper">
+                                                    <input class="input" name="email" type="text" autocomplete="webauthn" autocapitalize="none" maxlength="999" spellcheck="false" autocorrect="off" id="input-email" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="password">
+                                            <div class="field-wrapper">
+                                                <label class="input-label">Password
+                                                    <span class="required">*</span>
+                                                </label>
+                                                <div class="input-wrapper">
+                                                    <input class="input" name="password" type="password" autocomplete="off" maxlength="999" spellcheck="false" id="input-password" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="forgot-password">Forgot your password?</button>
+                                        <button type="submit" class="button">Log In</button>
+                                        <div class="register-redirect">
+                                            <span class="need-account">Need an account?</span>
+                                            <button type="button" class="link" onclick="redirectRegister()">Register</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <script src="/static/js/script.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

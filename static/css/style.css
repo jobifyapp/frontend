@@ -3,118 +3,690 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.25;
+    background-color: #323437;
 }
 
-/* Exported from fonts.css */
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 100;
-    font-style: normal;
-    src: url('../fonts/proximanova-thin.otf');
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #646669 transparent;
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 100;
-    font-style: italic;
-    src: url('../fonts/proximanova-thinit.otf');
+* {
+    box-sizing: border-box
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 300;
-    font-style: normal;
-    src: url('../fonts/proximanova-light.otf');
+h1 {
+    font-size: 36px;
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 300;
-    font-style: italic;
-    src: url('../fonts/proximanova-lightit.otf');
+h2 {
+    font-size: 30px;
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+.serif {
+    font-family: serif;
+}
+
+.sans-serif {
+    font-family: sans-serif;
+}
+
+.cursive {
+    font-family: cursive;
+}
+
+.monospace {
+    font-family: monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
-    font-style: normal;
-    src: url('../fonts/proximanova-regular.otf');
+    margin: 10px 0;
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
+.wide {
+    letter-spacing: 4px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+
+img, picture {
+    vertical-align: middle;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color .125s, color .125s, opacity .125s;
+}
+
+.button {
+    color: #d1d0c5;
+    cursor: pointer;
+    transition: background-color .125s, color .125s, opacity .125s;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    background: #2c2e31;
+    text-align: center;
+    user-select: none;
+    align-content: center;
+    height: min-content;
+    line-height: 1.25;
+    appearance: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1em;
+    display: inline flex;
+    gap: .5em;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: #d1d0c5;
+    color: #2c2e31
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Extracted from popups.css */
+
+.modalWrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    background: #00000080;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 2rem;
+    border: none;
+    grid-template-columns: 100%;
+}
+
+.modalWrapper .modal {
+    background: #323437;
+    border-radius: .5rem;
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    max-height: 100%;
+    max-width: 300px;
+    color: #d1d0c5;
+    overflow-y: auto;
+    box-shadow: 0 0 0 .2em #2c2e31;
+}
+
+#contactModal .modal {
+    overflow-y: scroll;
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+    scrollbar-width: thin;
+    scrollbar-color: #646669 transparent;
+}
+
+.modalWrapper .modal .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #646669;
+}
+
+.modalWrapper .modal .text {
+    color: #d1d0c5
+}
+
+.modalWrapper .modal .text .accent-text {
+    color: #f0cd6e
+}
+
+.modalWrapper .modal .buttons {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.modalWrapper .modal .buttons button {
+    padding: 1rem;
+    gap: 1rem;
+    display: grid;
+    grid-template-areas: 'icon textgroup';
+    grid-template-columns: auto 1fr;
+    text-align: left;
+    align-items: center;
+}
+
+.modalWrapper .modal .buttons button .icon {
+    grid-area: icon;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: inherit;
+    transition: .125s;
+}
+
+.modalWrapper .modal .buttons button .textgroup {
+    grid-area: textgroup
+}
+
+.modalWrapper .modal .buttons button .text {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    transition: .125s;
+    color: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Extracted from navbar.css */
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    background-color: #2c2e31!important;
+    padding: 20px 0;
+}
+
+.navigation .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin-left: 148px;
+    margin-right: 148px;
+    padding-left: 40px;
+    padding-right: 40px;
+    gap: 40px;
+}
+
+.left-items {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.left-items a, .contact-button {
+    color: #646669;
+    text-decoration: none;
+    font-size: 16px;
+    padding-right: 20px;
+    border: none;
+    background-color: transparent;
+    font-family: 'Nunito Sans';
+}
+
+.contact-button {
+    padding-right: 0px!important;
+    cursor: pointer;
+}
+
+.right-items {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-right {
+    gap: 40px;
+}
+
+.pill-button {
+    color: #f2f4fb;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.log-in{
+    background-color: #467750;
+    color: #e0e8e2
+}
+
+.log-in:hover {
+    background-color: #e0e8e2;
+    color: #2c2e31
+}
+
+.sign-up{
+    background-color: #f0cd6e;
+    color: #e0e8e2;
+    margin-right: 10px;
+}
+
+.sign-up:hover{
+    background-color: #e0e8e2;
+    color: #2c2e31
+}
+
+.hamburger {
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    color: #646669;
+    display: none;
+    margin-right: 10px
+}
+
+.hamburger i {
+    vertical-align: bottom;
+}
+
+@media (max-width: 982px) {
+    .hamburger {
+        display: inline-block;
+    }
+
+    .sign-up, .nav-left, .contact-button {
+        display: none;
+    }
+
+    .navigation .container {
+        margin: 100 0
+    }
+}
+
+@media (max-width: 620px) {
+    .navigation .container {
+        margin: 0 0
+    }
+}
+
+/* Extracted from popups.css */
+
+#notifications {
+    width: 350px;
+    z-index: 10;
+    display: grid;
+    gap: 1rem;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    transition: .125s opacity;
+}
+
+/* Extracted from footer.css */
+
+.footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    margin: 0px auto;
+    padding: 0 40px;
+    max-width: 1240px;
+    width: 1000%;
+    bottom: 0;
+    background-color: #2c2e31;
+    color: #646669
+}
+
+footer {
+    background-color: #2c2e31!important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+.blurb {
+    display: flex;
+    flex-direction: column;
+}
+
+.blurb .logo {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.blurb .motto {
+    margin-top: 24px;
+    flex: 1 1 0%;
+    max-width: 260px;
+}
+
+.hyperlinks {
+    display: flex;
+}
+
+.hyperlinks .column {
+    margin-left: 80px;
+}
+
+.hyperlinks .column .header {
+    color: #f2f4fb;
+    margin-bottom: 24px;
+}
+
+.hyperlinks .column .links {
+    margin: 0px;
+    list-style: none;
+}
+
+.hyperlinks .column .links .link {
+    margin-bottom: 16px;
+    display: block;
+    color: #646669;
+    transition: color 0.15s ease-out;
+    text-decoration: inherit;
+}
+
+li:hover::after {
+    width: 100%
+}
+
+.copyright {
+    position: absolute;
+    left: 40px;
+    bottom: 80px;
+}
+
+.copyright .info {
+    color: #646669;
+}
+
+/* Extracted from cookies.css */
+
+.disclaimer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+.disclaimer .banner {
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    box-sizing: inherit;
+}
+
+.disclaimer .banner .items {
+    align-items: center;
+    display: flex;
+}
+
+.disclaimer .banner .items .text {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.disclaimer .banner .items .close {
+    border-radius: 100%;
+    width: 17.5px;
+    height: 17.5px;
+    text-align: center;
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.disclaimer .banner .items .close i {
+    color: #000
+}
+
+/* Extracted from hero.css */
+
+
+
+/* Extracted from portfolio.css */
+
+/* Extracted from responsivenav.css */
+
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+    }
+}
+
+/* Extracted from listings.css */
+
+.listings {
+    margin: 40px auto 0px;
+    width: min(100%, 948px);
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+}
+
+.listings h1 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 2.188rem;
+    line-height: 2.5rem;
+    margin-bottom: 28px;
+}
+
+.listings .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    margin-top: 28px;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 840px) {
+    .listings .options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .listings .options {
+        grid-template-columns: 1fr;
+    }
+}
+
+.listings .options .option {
+    width: 100%
+}
+
+.listings .options .option .splash {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #000000;
+    height: 152px !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.listings .options .option .splash .background {
+    position: absolute;
+    inset: 0px;
+    z-index: 1;
+    background: url('https://media.licdn.com/dms/image/v2/C4E0BAQHNBvsVI1j06g/company-logo_200_200/company-logo_200_200/0/1630624665543/subway_logo?e=2147483647&v=beta&t=MUR_U9A1IEyjdn-ddEg8LYvPJCXNduFoaPzL5OvwbCQ') center center / cover no-repeat;
+    transform: scale(1.4);
+    filter: blur(10px);
+    opacity: 0.3;
+}
+
+.listings .options .option .splash .icon {
+    position: relative;
+    z-index: 2;
+    border: 2px solid #ffffff;
+    filter: drop-shadow(rgba(0, 0, 0, 0.16) 0px 32px 72px);
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.listings .options .option .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 16px;
+}
+
+.listings .options .option .info .details {
+    margin-right: 12px;
+}
+
+.listings .options .option .info .details .name {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    margin: 0px 0px 3px;
+    padding: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listings .options .option .info .details .city {
     font-weight: 400;
-    font-style: italic;
-    src: url('../fonts/proximanova-regularit.otf');
+    font-size: 14px;
+    color: #9195ab;
+    text-overflow: ellipsis;
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
+.listings .options .option .info .open {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    gap: .375rem;
+    align-items: center;
+    display: flex;
+    border: none;
+    background-color: #467750;
+    color: #ffffff
+}
+
+.listings .options .option .info .open:hover {
+    background-color: #d1d0c5;
+    color: #2c2e31
+}
+
+.listings .options .option .info .open .apply {
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 100%;
+    display: flex;
+}
+
+.listings .options .option .info .open .apply span {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: 500;
-    font-style: normal;
-    src: url('../fonts/proximanova-medium.otf');
 }
 
-@font-face {
-    font-family: 'Proxima Nova';
+.listings .filterbar {
+    height: 3em;
+    display: flex;
+    justify-items: left;
+    padding-left: none;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.listings .filterbar .openmodal {
+    background: #2c2e31;
+    height: 100%;
+    width: 3em;
+    border-radius: 1.5em;
+    padding: auto;
+    vertical-align: center;
+}
+
+.listings .filterbar .openmodal i {
+    color: #fff;
+    padding: .5em;
+    font-size: 1.5em
+}
+
+.listings .filterbar .selected {
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
+
+.listings .filterbar .selected .option {
+    height: 100%;
+    padding: .75rem 1.5rem;
+    border-radius: .5em;
+    background: #385563;
+    vertical-align: center;
     font-weight: 500;
-    font-style: italic;
-    src: url('../fonts/proximanova-mediumit.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 600;
-    font-style: normal;
-    src: url('../fonts/proximanova-semibold.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 600;
-    font-style: italic;
-    src: url('../fonts/proximanova-semiboldit.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 700;
-    font-style: normal;
-    src: url('../fonts/proximanova-bold.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 700;
-    font-style: italic;
-    src: url('../fonts/proximanova-boldit.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 800;
-    font-style: normal;
-    src: url('../fonts/proximanova-extrabold.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 800;
-    font-style: italic;
-    src: url('../fonts/proximanova-extraboldit.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 900;
-    font-style: normal;
-    src: url('../fonts/proximanova-black.otf');
-}
-
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: 900;
-    font-style: italic;
-    src: url('../fonts/proximanova-blackit.otf');
+    color: #ffffff
 }
