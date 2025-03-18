@@ -221,6 +221,54 @@ ol, ul {
     color: inherit;
 }
 
+.modalWrapper .modal .inputs label {
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.modalWrapper .modal .inputs .modalinput {
+    width: 100%;
+    border-radius: 4px;
+    background: #323437;
+    box-shadow: 0 0 0 .2em #2c2e31;
+    border: none;
+    margin: 8px 0;
+    padding-left: 8px;
+    color: #ffffff;
+}
+
+.modalWrapper .modal .inputs .short {
+    height: 2rem
+}
+
+.modalWrapper .modal .inputs .paragraph {
+    min-height: 6rem;
+    vertical-align: top;
+    resize: none;
+    padding-top: 8px;
+}
+
+.modalWrapper .modal .inputs .submit {
+    width: 100%
+}
+
+.modalWrapper .modal .inputs .submit .modalbutton {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 50%;
+    height: 2.5em;
+    background: #467750;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.5em;
+    border-radius: 8px;
+    border: none;
+}
+
 .hidden {
     display: none;
 }

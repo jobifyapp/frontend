@@ -2,6 +2,7 @@
 
 const modals = document.getElementsByClassName('modalWrapper')
 
+const contactquestion = document.getElementById('contactQuestion')
 
 window.onclick = function(event) {
     console.log(`window.onclick function called`)
@@ -10,6 +11,7 @@ window.onclick = function(event) {
     for (let modal of modals) {
         if (event.target == modal) {
             contactmodal.classList.add('hidden')
+            contactquestion.classList.add('hidden')
         }
     }
 }
@@ -19,6 +21,18 @@ const contactmodal = document.getElementById('contactModal')
 
 contactopen.addEventListener('click', () => {
     contactmodal.classList.remove('hidden')
+})
+
+const optionquestion = document.getElementById('question')
+const optionmeeting = document.getElementById('arrangeMeeting')
+const optionmental = document.getElementById('mentalHealth')
+const optionrelationship = document.getElementById('relationshipCounseling')
+const optionbusiness = document.getElementById('businessInquiry')
+const optiontip = document.getElementById('tipLine')
+
+optionquestion.addEventListener('click', () => {
+    contactmodal.classList.add('hidden')
+    contactquestion.classList.remove('hidden')
 })
 
 const cookieclose = document.getElementById('cookies-close')
