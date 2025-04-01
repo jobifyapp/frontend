@@ -3,6 +3,11 @@
 const modals = document.getElementsByClassName('modalWrapper')
 
 const contactquestion = document.getElementById('contactQuestion')
+const contactmeeting = document.getElementById('contactMeeting')
+const contactmental = document.getElementById('contactMental')
+const contactrelationship = document.getElementById('contactRelationship')
+const contactbusiness = document.getElementById('contactBusiness')
+const contacttip = document.getElementById('contactTip')
 
 window.onclick = function(event) {
     console.log(`window.onclick function called`)
@@ -12,6 +17,11 @@ window.onclick = function(event) {
         if (event.target == modal) {
             contactmodal.classList.add('hidden')
             contactquestion.classList.add('hidden')
+            contactmeeting.classList.add('hidden')
+            contactmental.classList.add('hidden')
+            contactrelationship.classList.add('hidden')
+            contactbusiness.classList.add('hidden')
+            contacttip.classList.add('hidden')
         }
     }
 }
@@ -33,6 +43,31 @@ const optiontip = document.getElementById('tipLine')
 optionquestion.addEventListener('click', () => {
     contactmodal.classList.add('hidden')
     contactquestion.classList.remove('hidden')
+})
+
+optionmeeting.addEventListener('click', () => {
+    contactmodal.classList.add('hidden')
+    contactmeeting.classList.remove('hidden')
+})
+
+optionmental.addEventListener('click', () => {
+    contactmodal.classList.add('hidden')
+    contactmental.classList.remove('hidden')
+})
+
+optionrelationship.addEventListener('click', () => {
+    contactmodal.classList.add('hidden')
+    contactrelationship.classList.remove('hidden')
+})
+
+optionbusiness.addEventListener('click', () => {
+    contactmodal.classList.add('hidden')
+    contactbusiness.classList.remove('hidden')
+})
+
+optiontip.addEventListener('click', () => {
+    contactmodal.classList.add('hidden')
+    contacttip.classList.remove('hidden')
 })
 
 const cookieclose = document.getElementById('cookies-close')

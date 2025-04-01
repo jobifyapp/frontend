@@ -249,6 +249,15 @@ ol, ul {
     padding-top: 8px;
 }
 
+.modalWrapper .modal .inputs .date {
+    font-family: 'Nunito Sans', sans-serif;
+    width: 128px;
+    height: 2rem;
+    color: #fff;
+    padding: 0 8px;
+    color-scheme: dark;
+}
+
 .modalWrapper .modal .inputs .submit {
     width: 100%
 }
