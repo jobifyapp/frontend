@@ -77,6 +77,76 @@ cookieclose.addEventListener('click', () => {
     cookiebanner.remove()
 })
 
+// Extracted from listings.js //
+
+async function fetchListings(tags = []) {
+    //const query = tags.length ? `?tags=${tags.join(',')}` : ''
+    //const response = await fetch(`/listings${query}`)
+    const listings = [{
+        id: 1,
+        name: "House1",
+        tags: ["garden", "pool", "wifi"]
+    }] // await response.json()
+
+    const container = document.getElementById('options')
+    container.innerHTML = ''
+
+    listings.forEach(listing => {
+        const parent = document.createElement('div')
+        
+        const option = document.createElement('div')
+        option.classList.add('option')
+
+        const splash = document.createElement('div')
+        splash.classList.add('splash')
+
+        const background = document.createElement('div')
+        background.classList.add('background')
+        background.style.background = `METHOD TO GET URL HERE`
+
+        splash.appendChild(background)
+
+        const icon = document.createElement('img')
+        icon.classList.add('icon')
+        icon.src = `METHOD TO GET URL HERE`
+
+        splash.appendChild(icon)
+        option.appendChild(splash)
+
+        const info = document.createElement('div')
+        info.classList.add('info')
+
+        const details = document.createElement('div')
+        details.classList.add('details')
+
+        const name = document.createElement('h3')
+        name.classList.add('name')
+        name.textContent = listing.name
+        details.appendChild(name)
+
+        const city = document.createElement('div')
+        city.classList.add('city')
+        city.textContent = 'TEST'
+        details.appendChild('city')
+        info.appendChild(details)
+
+        const open = document.createElement('button')
+        open.classList.add('open')
+
+        const apply = document.createElement('div')
+        apply.classList.add('apply')
+
+        const btntext = document.createElement('span')
+        btntext.textContent = 'Apply'
+        apply.appendChild(btntext)
+        open.appendChild(apply)
+        info.appendChild(open)
+        option.appendChild(info)
+        parent.appendChild(option)
+        container.appendChild(parent)
+    })
+}
+
 // Extracted from portal.js //
 
 document.addEventListener('DOMContentLoaded', () => {
