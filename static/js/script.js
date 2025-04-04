@@ -8,6 +8,7 @@ const contactmental = document.getElementById('contactMental')
 const contactrelationship = document.getElementById('contactRelationship')
 const contactbusiness = document.getElementById('contactBusiness')
 const contacttip = document.getElementById('contactTip')
+const postlisting = document.getElementById('postModal')
 
 window.onclick = function(event) {
     console.log(`window.onclick function called`)
@@ -22,6 +23,7 @@ window.onclick = function(event) {
             contactrelationship.classList.add('hidden')
             contactbusiness.classList.add('hidden')
             contacttip.classList.add('hidden')
+            postlisting.classList.add('hidden')
         }
     }
 }
@@ -85,14 +87,23 @@ async function fetchListings(tags = []) {
     const listings = [{
         id: 1,
         name: "House1",
+        location: "Fulton, MO",
         tags: ["garden", "pool", "wifi"],
         icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-TfDAisMrcoxUe9MYTXeLYkiCT8uLSkMYog&s"
     },
     {
         id: 2,
         name: "House2",
+        location: "Fulton, MO",
         tags: ["garden"],
         icon: "https://imgcdn.stablediffusionweb.com/2024/9/27/4b3b11af-fd3a-4a8d-8191-1392be3c6f9a.jpg"
+    },
+    {
+        id: 3,
+        name: "MizzouMafia",
+        location: "University Hall",
+        tags: ["tigers"],
+        icon: "https://content.sportslogos.net/logos/32/757/full/missouri_tigers_logo_secondary_19991034.png"
     }
     ] // await response.json()
 
@@ -124,7 +135,7 @@ async function fetchListings(tags = []) {
         details.appendChild(name)
         const city = document.createElement('div')
         city.classList.add('city')
-        city.textContent = 'TEST'
+        city.textContent = listing.location
         details.appendChild(city)
         info.appendChild(details)
         const open = document.createElement('button')
