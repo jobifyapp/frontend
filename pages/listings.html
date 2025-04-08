@@ -6,7 +6,7 @@
         <!--FILL IN THE FAVICON-->
         <link rel="icon" type="image/x-icon" sizes="32x32" href="">
         <meta name="author" content="Emerson Reinhard">
-        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="/static/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
         </div>
         <div id="notifications"></div>
         <div id="modals">
-            <div id="postModal" class="modalWrapper">
+            <div id="postModal" class="modalWrapper hidden">
                 <div class="modal" style="min-width: 900px">
                     <div class="title">Post Listing</div>
                     <div class="text">
@@ -36,6 +36,61 @@
                         <br><br>
                         Please see <span class="accent-text"><a href="#">this article</a></span> to get a good understanding on how to create a perfect listing. Happy posting!
                     </div>
+                    <form class="inputs" id="postModalForm">
+                        <label>Listing name</label>
+                        <input type="text" id="postname" class="modalinput short">
+                        <div class="modalgrid fourfifthsone">
+                            <div>
+                                <label>Listing icon (url)</label>
+                                <input type="text" id="posticon" class="modalinput short">
+                            </div>
+                            <div>
+                                <label>Zip code</label>
+                                <input type="text" id="postlocation" class="modalinput short">
+                            </div>
+                        </div>
+                        <div class="modalgrid halfhalf">
+                            <div>
+                                <label>Salary / Pay</label>
+                                <input type="text" id="postsalary" class="modalinput short">
+                            </div>
+                            <div>
+                                <label>Schedule type</label>
+                                <div class="radioinput">
+                                    <div class="roption">
+                                        <input type="radio" name="s" id="parttime" class="radioinput radio">
+                                        <label for="parttime">Part-time</label>
+                                    </div>
+                                    <div class="roption">
+                                        <input type="radio" name="s" id="fulltime" class="radioinput radio">
+                                        <label for="fulltime">Full-time</label>
+                                    </div>
+                                    <div class="roption">
+                                        <input type="radio" name="s" id="flexible" class="radioinput radio">
+                                        <label for="flexible">Flexible</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <label>Job description</label>
+                        <input type="text" id="postdescription" class="modalinput paragraph">
+                        <label>Requirements</label>
+                        <input type="text" id="postrequirements" class="modalinput paragraph">
+                        <label>Desired skills</label>
+                        <input type="text" id="postskills" class="modalinput paragraph">
+                        <label>Employee responsibilities</label>
+                        <input type="text" id="postresponsibilities" class="modalinput paragraph">
+                        <label>Work benefits</label>
+                        <input type="text" id="postbenefits" class="modalinput paragraph">
+                        <div class="submit">
+                            <input type="submit" value="Post" class="modalbutton">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="postModalFollowup" class="modalWrapper hidden">
+                <div class="modal">
+                    <div class="title">Post Listing</div>
                 </div>
             </div>
             <div id="contactModal" class="modalWrapper hidden">
@@ -130,170 +185,25 @@
                         <i class="fas fa-sliders-h"></i>
                     </div>
                     <div class="selected">
-                        <div class="option">
+                        <div class="note">
+                            <span>Try adding a filter to see options fit for you!</span>
+                        </div>
+                        <div class="option hidden">
                             <span>NEW (4+)</span>
                         </div>
-                        <div class="option">
+                        <div class="option hidden">
                             <span>FAST FOOD (3+)</span>
                         </div>
-                        <div class="option">
+                        <div class="option hidden">
                             <span>VOLUNTEER (3+)</span>
                         </div>
                     </div>
                 </div>
                 <div class="options" id="options">
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://media.licdn.com/dms/image/v2/C4E0BAQHNBvsVI1j06g/company-logo_200_200/company-logo_200_200/0/1630624665543/subway_logo?e=2147483647&v=beta&t=MUR_U9A1IEyjdn-ddEg8LYvPJCXNduFoaPzL5OvwbCQ') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://media.licdn.com/dms/image/v2/C4E0BAQHNBvsVI1j06g/company-logo_200_200/company-logo_200_200/0/1630624665543/subway_logo?e=2147483647&v=beta&t=MUR_U9A1IEyjdn-ddEg8LYvPJCXNduFoaPzL5OvwbCQ" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Subway</h3>
-                                    <div class="city">Fulton, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/McDonald%27s_square_2020.svg/640px-McDonald%27s_square_2020.svg.png') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/McDonald%27s_square_2020.svg/640px-McDonald%27s_square_2020.svg.png" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">McDonalds</h3>
-                                    <div class="city">Kingdom City, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAE20lEQVRIib2WXUwUVxTH//fOzM4uCxVdcLMIqFGLtCUtsWoiiikV0oYmbaCNDTYxadQ2FTTqg9pSbRO1vpCmUUxomiZGy4uBSOJHYw0N2KQGtLbFRkkxweVjg7Ci2S92Pu7pwwIyQ2GxTXueZmfO/H97zpl7758RESaipS3c3Ba5eFcPxgkMTxcEj4OV5ysVG91vbkydvM0SgHv92vLdQwgTXAwSnlp9ggETiBFSWc9X3mXZDgB8XL0qAALSGORZ1YmBZn7MABlIYyAsrwrc69fGK2CVfaAEa9bQlMWpYQD3w6lw6EmSBcBATTm8pS2MMCVX1+W6da29e1f07l1Rt64VupwknwNhamkLS8rS3b+PiOSAuNqyeassXDCeKcz6+ei17VCMJK9ITNEEv3RHh5RMPYEw5tsukgFw6Y7Og9rcvkhGD6M5YAaY8TCaA0ZzeAVBjbhd3ZQQUxFXoCk2QDDiAwzACEZ8doCmIK4gpsK0doPZem/yzTl+OlhAtb4zpU2IuCAmEhgNhb2JCobC3icAwRFxnS1tolofHSzYnOOHadG0AjTl+KY6MBPa4vdWVw/WbM1LiYyXwmkg5AWLg8UHQl5wSuTnpUQGa7ZuWV0NbTGYeXxTna10K4Dh0VgmeBBg0Jf45t28uzOvtrADkRRw0fUgF0oMSqzrQS64QCSltrDj7s4837yb0JcADDz4aCzT1nMJz+2Z8ktc+HNtaXbU62kFOIQbYl5JfkPRQteZ22s7hr2Z9EJn71uf3SiCKV15p35b0YfQc0EKpBAcga7+beXN+0PMshcwVPotRGKIOddnBY4VN27IOw7TDTEfrv6Shls/jmSO91cSr2QMt35QiFg2+CikyLXuAx+3V/006INrzDb/aYDJ0cUVT2rkxIYLlQX1fY9eWv7tl5aVpcs97+/JSf+1qWtnzbU3gmE3VB1cTFeaATBZjS7DkMEEXHH705gK4pANKMYsyyLpFvFvYwaA4IipHllvLDsX37++Z8cu++6myz07dsX3r28sO+eRdcTUJyvGGv/zkIktcmiXK78oyP0GxgKYaQBB9f/wx+Gypo/A6GTx9wCq218DsSuVp0qf/xzxXIBBCkF+2OXf9nrTwQHNMZVhXQdxtf3dYy9mfw19CUgFH4M0+Onllu1X3oaqV+ffPlxeuWbp+eBIWcdoxpnf1pnRopJnGwAnRCrMdG96a0mW3vDLq5DNGWZASHcOQ3gAgtIbeLxqZX33kVtr4I5C8IKFfugu6K6ChX4IDnf0yK01K+u7A49XQekFCMKT7hyG9YOyAhz6gav7QBIc9892nsw6cbo76h4/HQVblDYEUkHqorQhCJbI7466s06cPtt5Eo77IOnA1X2203TakE0JmgwuwGBJHVM7txx9ObcRwA1/1ervPoFzysrQFBAgOBwGJHOqngyy2gjJhMuSMdE95nEHABmAxx2we4uZPACBe1SGOZxOILYgpQ8kg+QFKX2zmZcp6h6V8fJ8BX/3j6eHKo/aLpKEifJ8hVcUuxGbQwmKfur6ITj74ew/df0QlGS+CECMKord/7nxYkQ0bh0zeHJGovVJLYUARkRPo29ZtoMDWJbt6Gn0gQEhgoHZZs5oNnUCDCBEYEioY9JdJ6KlLdzcHrl455/ad5WV5ysVxRb7/hc7PDjwM4Ui4QAAAABJRU5ErkJggg==') center center / cover no-repeat"></div>
-                                <img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAE20lEQVRIib2WXUwUVxTH//fOzM4uCxVdcLMIqFGLtCUtsWoiiikV0oYmbaCNDTYxadQ2FTTqg9pSbRO1vpCmUUxomiZGy4uBSOJHYw0N2KQGtLbFRkkxweVjg7Ci2S92Pu7pwwIyQ2GxTXueZmfO/H97zpl7758RESaipS3c3Ba5eFcPxgkMTxcEj4OV5ysVG91vbkydvM0SgHv92vLdQwgTXAwSnlp9ggETiBFSWc9X3mXZDgB8XL0qAALSGORZ1YmBZn7MABlIYyAsrwrc69fGK2CVfaAEa9bQlMWpYQD3w6lw6EmSBcBATTm8pS2MMCVX1+W6da29e1f07l1Rt64VupwknwNhamkLS8rS3b+PiOSAuNqyeassXDCeKcz6+ei17VCMJK9ITNEEv3RHh5RMPYEw5tsukgFw6Y7Og9rcvkhGD6M5YAaY8TCaA0ZzeAVBjbhd3ZQQUxFXoCk2QDDiAwzACEZ8doCmIK4gpsK0doPZem/yzTl+OlhAtb4zpU2IuCAmEhgNhb2JCobC3icAwRFxnS1tolofHSzYnOOHadG0AjTl+KY6MBPa4vdWVw/WbM1LiYyXwmkg5AWLg8UHQl5wSuTnpUQGa7ZuWV0NbTGYeXxTna10K4Dh0VgmeBBg0Jf45t28uzOvtrADkRRw0fUgF0oMSqzrQS64QCSltrDj7s4837yb0JcADDz4aCzT1nMJz+2Z8ktc+HNtaXbU62kFOIQbYl5JfkPRQteZ22s7hr2Z9EJn71uf3SiCKV15p35b0YfQc0EKpBAcga7+beXN+0PMshcwVPotRGKIOddnBY4VN27IOw7TDTEfrv6Shls/jmSO91cSr2QMt35QiFg2+CikyLXuAx+3V/006INrzDb/aYDJ0cUVT2rkxIYLlQX1fY9eWv7tl5aVpcs97+/JSf+1qWtnzbU3gmE3VB1cTFeaATBZjS7DkMEEXHH705gK4pANKMYsyyLpFvFvYwaA4IipHllvLDsX37++Z8cu++6myz07dsX3r28sO+eRdcTUJyvGGv/zkIktcmiXK78oyP0GxgKYaQBB9f/wx+Gypo/A6GTx9wCq218DsSuVp0qf/xzxXIBBCkF+2OXf9nrTwQHNMZVhXQdxtf3dYy9mfw19CUgFH4M0+Onllu1X3oaqV+ffPlxeuWbp+eBIWcdoxpnf1pnRopJnGwAnRCrMdG96a0mW3vDLq5DNGWZASHcOQ3gAgtIbeLxqZX33kVtr4I5C8IKFfugu6K6ChX4IDnf0yK01K+u7A49XQekFCMKT7hyG9YOyAhz6gav7QBIc9892nsw6cbo76h4/HQVblDYEUkHqorQhCJbI7466s06cPtt5Eo77IOnA1X2203TakE0JmgwuwGBJHVM7txx9ObcRwA1/1ervPoFzysrQFBAgOBwGJHOqngyy2gjJhMuSMdE95nEHABmAxx2we4uZPACBe1SGOZxOILYgpQ8kg+QFKX2zmZcp6h6V8fJ8BX/3j6eHKo/aLpKEifJ8hVcUuxGbQwmKfur6ITj74ew/df0QlGS+CECMKord/7nxYkQ0bh0zeHJGovVJLYUARkRPo29ZtoMDWJbt6Gn0gQEhgoHZZs5oNnUCDCBEYEioY9JdJ6KlLdzcHrl455/ad5WV5ysVxRb7/hc7PDjwM4Ui4QAAAABJRU5ErkJggg==" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Walmart</h3>
-                                    <div class="city">Mexico, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1200px-Chipotle_Mexican_Grill_logo.svg.png') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1200px-Chipotle_Mexican_Grill_logo.svg.png" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Chipotle</h3>
-                                    <div class="city">Columbia, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://static.wixstatic.com/media/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://static.wixstatic.com/media/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/595182_28408bc2f8034fb1bc1dd1c16c628b1c%7Emv2.png" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Ice Cream Factory</h3>
-                                    <div class="city">Jefferson City, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://pbs.twimg.com/profile_images/987417355188883457/BNfarabT_400x400.jpg') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://pbs.twimg.com/profile_images/987417355188883457/BNfarabT_400x400.jpg" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Chick-Fil-A</h3>
-                                    <div class="city">Wentzville, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaeEyZ_vqOHj0e-nZDe6mPOhP167E3rEatw&s') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaeEyZ_vqOHj0e-nZDe6mPOhP167E3rEatw&s" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Casey's</h3>
-                                    <div class="city">Auxvasse, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="option">
-                            <div class="splash">
-                                <div class="background" style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTytx2fZvFlDk9V5XgqzR-niU196AjG6jQ4vg&s') center center / cover no-repeat"></div>
-                                <img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTytx2fZvFlDk9V5XgqzR-niU196AjG6jQ4vg&s" size="80" radius="40" alt="Logo of {x}">
-                            </div>
-                            <div class="info">
-                                <div class="details">
-                                    <h3 class="name">Crane's Country Store</h3>
-                                    <div class="city">Williamsburg, MO</div>
-                                </div>
-                                <button class="open">
-                                    <div class="apply">
-                                        <span>Apply</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <h5>Sorry, we couldn't find any listings that match your search queries :(</h5>
+                </div>
+                <button class="post" id="post">
+                    <span>+</span>
                 </div>
             </div>
             <footer>
@@ -367,8 +277,8 @@
                 </div>
             </footer>
         </div>
-        <script src="../static/js/script.js"></script>
-        <script>window.onload = fetchListings</script>
+        <script src="/static/js/script.js"></script>
+        <script>window.onload = fetchListings([])</script>
     </body>
 </html>
 

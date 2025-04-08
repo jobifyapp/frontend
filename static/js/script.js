@@ -15,15 +15,17 @@ window.onclick = function(event) {
     console.log(event.target)
 
     for (let modal of modals) {
+        console.log(modal)
         if (event.target == modal) {
-            contactmodal.classList.add('hidden')
-            contactquestion.classList.add('hidden')
-            contactmeeting.classList.add('hidden')
-            contactmental.classList.add('hidden')
-            contactrelationship.classList.add('hidden')
-            contactbusiness.classList.add('hidden')
-            contacttip.classList.add('hidden')
-            postlisting.classList.add('hidden')
+            event.target.classList.add('hidden')
+            //contactmodal.classList.add('hidden');
+            //contactquestion.classList.add('hidden');
+            //contactmeeting.classList.add('hidden');
+            //contactmental.classList.add('hidden');
+            //contactrelationship.classList.add('hidden');
+            //contactbusiness.classList.add('hidden');
+            //contacttip.classList.add('hidden');
+            //postlisting.classList.add('hidden');
         }
     }
 }
@@ -72,6 +74,13 @@ optiontip.addEventListener('click', () => {
     contacttip.classList.remove('hidden')
 })
 
+const postopen = document.getElementById('post')
+
+postopen.addEventListener('click', () => {
+    postlisting.classList.remove('hidden')
+})
+
+
 const cookieclose = document.getElementById('cookies-close')
 const cookiebanner = document.getElementById('cookies')
 
@@ -79,33 +88,68 @@ cookieclose.addEventListener('click', () => {
     cookiebanner.remove()
 })
 
+const navregister = document.getElementById('navregister')
+const navlogin = document.getElementById('navlogin')
+
+navregister.addEventListener('click', () => {
+    window.location.href = '/register'
+})
+
+navlogin.addEventListener('click', () => {
+    window.location.href = '/login'
+})
+
 // Extracted from listings.js //
 
-async function fetchListings(tags = []) {
-    //const query = tags.length ? `?tags=${tags.join(',')}` : ''
-    //const response = await fetch(`/listings${query}`)
-    const listings = [{
-        id: 1,
-        name: "House1",
-        location: "Fulton, MO",
-        tags: ["garden", "pool", "wifi"],
-        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-TfDAisMrcoxUe9MYTXeLYkiCT8uLSkMYog&s"
-    },
-    {
-        id: 2,
-        name: "House2",
-        location: "Fulton, MO",
-        tags: ["garden"],
-        icon: "https://imgcdn.stablediffusionweb.com/2024/9/27/4b3b11af-fd3a-4a8d-8191-1392be3c6f9a.jpg"
-    },
-    {
-        id: 3,
-        name: "MizzouMafia",
-        location: "University Hall",
-        tags: ["tigers"],
-        icon: "https://content.sportslogos.net/logos/32/757/full/missouri_tigers_logo_secondary_19991034.png"
+const postform = document.getElementById('postModalForm')
+
+postform.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const name = document.getElementById('postname').value
+    const icon = document.getElementById('posticon').value
+    const location = document.getElementById('postlocation').value
+    const salary = document.getElementById('postsalary').value
+    const arrangements = 'Part-time'
+    const description = document.getElementById('postdescription').value
+    const requirements = document.getElementById('postrequirements').value
+    const skills = document.getElementById('postskills').value
+    const responsibilities = document.getElementById('postresponsibilities').value
+    const benefits = document.getElementById('postbenefits').value
+
+    const response = await fetch('/post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, icon, location, salary, description, arrangements, requirements, skills, responsibilities, benefits })
+    })
+
+    const data = await response.json()
+    if (response.ok) {
+        alert(`Posted listing with ID: ${data.id}`)
+        window.location.href = `/listings/${data.id}`
+    } else {
+        alert(data.error)
     }
-    ] // await response.json()
+})
+
+async function fetchListings(tags = []) {
+    if (!tags) {
+        tags = ''
+    }
+
+    const response = await fetch('/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tags })
+    })
+    
+    const data = await response.json()
+    console.log(data)
+
+    const listings = data.listings
+    
+    if (listings.length == 0) {
+        return
+    }
 
     const container = document.getElementById('options')
     container.innerHTML = ''

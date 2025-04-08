@@ -156,7 +156,7 @@ ol, ul {
     display: grid;
     gap: 1rem;
     width: 100%;
-    max-height: 100%;
+    max-height: 600px;
     max-width: 300px;
     color: #d1d0c5;
     overflow-y: auto;
@@ -258,6 +258,15 @@ ol, ul {
     color-scheme: dark;
 }
 
+.modalWrapper .modal .inputs .upload {
+    font-family: 'Nunito Sans', sans-serif;
+    width: 256px;
+    height: 2rem;
+    color: #fff;
+    padding: 0 8px;
+    color-scheme: dark;
+}
+
 .modalWrapper .modal .inputs .submit {
     width: 100%
 }
@@ -276,6 +285,51 @@ ol, ul {
     font-size: 1.5em;
     border-radius: 8px;
     border: none;
+}
+
+.modalWrapper .modal .inputs .modalgrid {
+    display: grid;
+    gap: 40px
+}
+
+.modalWrapper .modal .inputs .fourfifthsone {
+    grid-template-columns: 4fr 1fr;
+}
+
+.modalWrapper .modal .inputs .halfhalf {
+    grid-template-columns: 1fr 1fr;
+}
+
+.modalWrapper .modal .inputs .radioinput {
+    display: grid;
+    vertical-align: none;
+    height: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 8px 0;
+}
+
+.modalWrapper .modal .inputs .radioinput .roption {
+    display: flex;
+    flex-direction: row;
+}
+
+.modalWrapper .modal .inputs .radioinput .roption input[type=radio] {
+    color: #00ffea;
+    height: 12px;
+    width: 12px;
+    margin-right: 12px;
+}
+
+.modalWrapper .modal .inputs .radioinput .roption label {
+    float: left;
+    font-weight: 100;
+    text-transform: none;
+    line-height: 100%;
+    margin: 8px 0
+}
+
+.modalWrapper .modal .inputs .radioinput .roption input[type=radio]:checked {
+    background: gold
 }
 
 .hidden {
@@ -545,20 +599,6 @@ li:hover::after {
     color: #000
 }
 
-/* Extracted from hero.css */
-
-
-
-/* Extracted from portfolio.css */
-
-/* Extracted from responsivenav.css */
-
-@media (max-width: 1024px) {
-    .container {
-        width: 95%;
-    }
-}
-
 /* Extracted from listings.css */
 
 .listings {
@@ -587,6 +627,15 @@ li:hover::after {
     width: 100%;
     margin-top: 28px;
     margin-bottom: 60px;
+}
+
+.listings .options h5 {
+    margin: auto;
+    text-wrap: nowrap;
+    font-style: italic;
+    font-size: 15px;
+    color: #9195ab;
+    margin: auto 0;
 }
 
 @media (max-width: 840px) {
@@ -724,6 +773,7 @@ li:hover::after {
     border-radius: 1.5em;
     padding: auto;
     vertical-align: center;
+    border: none
 }
 
 .listings .filterbar .openmodal i {
@@ -742,10 +792,47 @@ li:hover::after {
     height: 100%;
     padding: .75rem 1.5rem;
     border-radius: .5em;
-    background: #385563;
+    background: #2c2e31;
     vertical-align: center;
     font-weight: 500;
     color: #ffffff
+}
+
+.listings .filterbar .selected .option span {
+    padding: 0;
+    height: 100%;
+}
+
+.listings .filterbar .selected .note {
+    text-wrap: nowrap;
+    height: 100%;
+    padding: .75rem 1.5rem;
+    background: transparent;
+    font-weight: 400;
+    font-style: italic;
+    color: #9195ab;
+}
+
+.post {
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    background-color: #467750;
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    text-align: center;
+    padding: auto;
+    border: none
+}
+
+.post span {
+    font-weight: 500;
+    font-size: 60px;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    color: white;
 }
 
 /* Extracted from listing.css */
@@ -763,32 +850,42 @@ li:hover::after {
 
 .listing .splash {
     width: 100%;
-    height: 250px;
+    height: 250px !important;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    background: #000000;
 }
 
-.listing .splash img {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    filter: blur(2px) brightness(70%);
+.listing .splash .container {
+    filter: blur(10px);
+    opacity: 0.3;
+    position: absolute;
+    inset: 0px;
+    transform: scale(1.4);
+    z-index: 1;
 }
 
 .listing .info {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     width: 100%;
     margin-top: 28px;
     margin-bottom: 60px;
-    margin-left: 24px;
+    margin-left: 28px;
+    align-items: center;
 }
 
 .listing .info .icon {
-    width: 80px;
-    height: 80px;
+    width: 128px;
+    height: 128px;
 }
 
 .listing .info .icon img {
     border-radius: 16px;
+    width: 100%;
+    height: 100%
 }
 
 .listing .info .text {
@@ -811,4 +908,42 @@ li:hover::after {
     font-size: 18px;
     color: #9195ab;
     text-overflow: ellipsis;
+    margin-bottom: 0
+}
+
+.listing .info .details .blurb {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 10px 0
+}
+
+.listing .info .details .blurb h3 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #9195ab;
+    text-overflow: ellipsis;
+    margin: 0
+}
+
+.listing .info .details .blurb i {
+    margin-right: 8px;
+    font-size: 1.5rem;
+    color: #9195ab
+}
+
+.listing hr {
+    border-top: 5px solid #2c2e31;
+    width: 90%;
+    margin-top: -10px
+}
+
+/* Extracted from portal.css */
+
+.portal {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: #2c2e31;
 }
