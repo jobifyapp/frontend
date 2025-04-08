@@ -939,6 +939,68 @@ li:hover::after {
     margin-top: -10px
 }
 
+.listing .idetails {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    gap: 40px;
+}
+
+.listing h6 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #9195ab;
+    font-style: italic;
+    margin-bottom: 100px;
+}
+
+.listing .idetails .job div {
+    margin-bottom: 32px
+}
+
+.listing .idetails .job h3 {
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.listing .idetails .job h5 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #9195ab
+}
+
+.listing .idetails .employer h3 {
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.listing .idetails .employer img {
+    width: 65%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 3px white solid;
+}
+
+.listing .apply {
+    display: block;
+    margin: auto;
+    margin: 10px 0;
+    width: 50%;
+    height: 2.5em;
+    background: #467750;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.5em;
+    border-radius: 8px;
+    border: none;
+}
+
 /* Extracted from portal.css */
 
 .portal {
