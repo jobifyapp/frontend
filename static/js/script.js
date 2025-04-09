@@ -80,6 +80,12 @@ postopen.addEventListener('click', () => {
     postlisting.classList.remove('hidden')
 })
 
+const anncpost = document.getElementById('postannouncements')
+const anncmodal = document.getElementById('postAnnouncementModal')
+
+anncpost.addEventListener('click', () => {
+    anncmodal.classList.remove('hidden')
+})
 
 const cookieclose = document.getElementById('cookies-close')
 const cookiebanner = document.getElementById('cookies')
@@ -130,6 +136,8 @@ postform.addEventListener('submit', async (e) => {
         alert(data.error)
     }
 })
+
+
 
 async function fetchListings(tags = []) {
     if (!tags) {
