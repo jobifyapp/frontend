@@ -1117,3 +1117,117 @@ li:hover::after {
 .counselorsnote {
     background: #323437
 }
+
+/* Extracted from console.css */
+
+.console {
+    margin: 40px auto 0px;
+    width: min(100%, 948px);
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+}
+
+.console h1 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 2.188rem;
+    line-height: 2.5rem;
+    margin-bottom: 28px;
+}
+
+.console .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    margin-top: 28px;
+    margin-bottom: 60px;
+}
+
+.console .options h5 {
+    margin: auto;
+    text-wrap: nowrap;
+    font-style: italic;
+    font-size: 15px;
+    color: #9195ab;
+    margin: auto 0;
+}
+
+@media (max-width: 840px) {
+    .console .options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .console .options {
+        grid-template-columns: 1fr;
+    }
+}
+
+.console .options .option {
+    width: 100%
+}
+
+.console .options .option .splash {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #2c2e31;
+    height: 152px !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.console .options .option .splash .icon {
+    font-size: 60px;
+}
+
+.console .options .option .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 16px;
+}
+
+.console .options .option .info .details {
+    margin-right: 12px;
+}
+
+.console .options .option .info .details .name {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    margin: 0px 0px 3px;
+    padding: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.console .options .option .info .details .blurb {
+    font-weight: 400;
+    font-size: 14px;
+    color: #9195ab;
+    text-overflow: ellipsis;
+}
+
+.console .options .option .info .open {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    gap: .375rem;
+    align-items: center;
+    display: flex;
+    border: none;
+    background-color: #467750;
+    color: #ffffff
+}
