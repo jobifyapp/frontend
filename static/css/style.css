@@ -1008,4 +1008,112 @@ li:hover::after {
     width: 100%;
     position: absolute;
     background: #2c2e31;
+    display: flex;
+    align-items: center;
+}
+
+.portal .modal {
+    background: #323437;
+    height: 600px;
+    width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border-radius: .5rem;
+    box-shadow: 0 0 0 .2em #2c2e31;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.portal .modal div {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.portal .modal .inputs h1 {
+    font-size: 24px;
+    color: #d1d0c5;
+    font-weight: 800;
+    margin: 0 auto
+}
+
+.portal .modal .inputs input {
+    width: 100%;
+    border-radius: 4px;
+    background: #323437;
+    box-shadow: 0 0 0 .2em #2c2e31;
+    border: none;
+    margin: 8px 0;
+    padding-left: 8px;
+    color: #fff
+}
+
+.portal .modal .inputs .itext {
+    height: 2rem;
+}
+
+/* Extracted from hero.css */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto 
+}
+
+.hero h1 {
+    color: #fff;
+    font-size: 70px;
+    font-weight: 800;
+}
+
+.hero h3 {
+    color: #f0cd6e;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.homesect {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    min-height: 460px;
+}
+
+.hsrev {
+    grid-template-columns: 1fr 2fr !important;
+}
+
+.homesect div {
+    display: flex;
+    justify-content: center;
+}
+
+.homesect div img {
+    width: 80%;
+    height: auto;
+}
+
+.homelistings {
+    background: #D9EEE1;
+    min-height: 300px !important;
+    height: 300px !important;
+}
+
+.homesect div h1 {
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.homeresources {
+    background: #FFF4A3
+}
+
+.homecontact {
+    background: #96D4D4
+}
+
+.counselorsnote {
+    background: #323437
 }
