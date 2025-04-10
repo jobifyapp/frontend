@@ -308,6 +308,10 @@ ol, ul {
     margin: 8px 0;
 }
 
+.modalWrapper .modal .inputs .rifour {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+
 .modalWrapper .modal .inputs .radioinput .roption {
     display: flex;
     flex-direction: row;
@@ -999,6 +1003,18 @@ li:hover::after {
     font-size: 1.5em;
     border-radius: 8px;
     border: none;
+}
+
+.listing .buttons {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%
+}
+
+.listing .buttons button {
+    margin: auto;
+    width: 100%
 }
 
 /* Extracted from portal.css */
