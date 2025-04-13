@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us" style="overflow: hidden;">
+    <head>
+        <meta charset="utf-8">
+        <title>Jobify × Login</title>
+        <!--FILL IN THE FAVICON-->
+        <link rel="icon" type="image/x-icon" sizes="32x32" href="/static/img/logo.png">
+        <meta name="author" content="Emerson Reinhard">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="root">
+            <div class="portal">
+                <div class="modal">
+                    <div class="inputs">
+                        <h1>Welcome back!</h1>
+                        <h3>We missed you!</h3>
+                        <form class="register" id="loginform">
+                            <label>Email</label>
+                            <input type="text" id="email">
+                            <label>Password</label>
+                            <input type="password" id="password">
+                            <input type="submit" class="submit" value="Log In">
+                            <a href="/forgot-password" style="color: #0000FF;">Forgot password?</a>
+                        </form>
+                    </div>
+                    <div class="login">
+                        <h1>New to Jobify?</h1>
+                        <button onclick="window.location.href = '/register'">Create an account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/static/js/script.js"></script>
+    </body>
+</html>
+
+<!--
+<div class="notif notice" id="0" style="opacity: 0.36;">
+    <div class="message"><div class="title"><div class="icon"><i class="fas fa-info-circle"></i></div>Notice</div>Test invalid - AFK detected</div>
+</div>
+-->

@@ -66,6 +66,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 10px 0;
 }
 
+p {
+    margin: 10px 0;
+}
+
 .wide {
     letter-spacing: 4px;
 }
@@ -247,6 +251,8 @@ ol, ul {
     vertical-align: top;
     resize: none;
     padding-top: 8px;
+    text-wrap: wrap;
+    text-wrap-style:auto
 }
 
 .modalWrapper .modal .inputs .date {
@@ -463,6 +469,71 @@ ol, ul {
     .navigation .container {
         margin: 0 0
     }
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown .usertoggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    color: #646669
+}
+
+.dropdown .usertoggle .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dropdown .usertoggle .arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown .menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    min-width: 150px;
+    z-index: 998;
+}
+
+.dropdown.hidden {
+    display: none;
+}
+
+.dropdown .menu a {
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown .menu a:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown.open .arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown.open .menu {
+    display: flex;
 }
 
 /* Extracted from popups.css */
@@ -852,6 +923,33 @@ li:hover::after {
     position: relative;
 }
 
+.listing .applicationmessage {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    background: #2c2e31;
+    padding: 16px;
+    margin-bottom: 32px;
+    flex-direction: column;
+}
+
+.listing .applicationmessage h1 {
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0
+}
+
+.listing .applicationmessage h3 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #9195ab;
+    margin: 0;
+}
+
 .listing .splash {
     width: 100%;
     height: 250px !important;
@@ -950,6 +1048,21 @@ li:hover::after {
     gap: 40px;
 }
 
+.listing .idetails form textarea {
+    background: #323437;
+    box-shadow: 0 0 0 .2em #2c2e31;
+    min-height: 6rem;
+    vertical-align: top;
+    resize: none;
+    padding-top: 8px;
+    border-radius: 4px;
+    width: 100%;
+    margin: 8px 0;
+    padding-left: 8px;
+    color: #ffffff;
+    border: none;
+}
+
 .listing h6 {
     font-weight: 400;
     font-size: 18px;
@@ -972,7 +1085,7 @@ li:hover::after {
 .listing .idetails .job h5 {
     font-weight: 400;
     font-size: 18px;
-    color: #9195ab
+    color: #9195ab;
 }
 
 .listing .idetails .employer h3 {
@@ -980,6 +1093,19 @@ li:hover::after {
     font-size: 14px;
     text-transform: uppercase;
     color: #fff
+}
+
+.listing .idetails .employer h1 {
+    font-weight: 500;
+    font-size: 22px;
+    color: #fff;
+}
+
+.listing .idetails .employer h5 {
+    font-weight: 300;
+    font-size: 18px;
+    color: #9195ab;
+    font-style: italic;
 }
 
 .listing .idetails .employer img {
@@ -1043,7 +1169,7 @@ li:hover::after {
 
 .portal .modal div {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -1054,6 +1180,17 @@ li:hover::after {
     margin: 0 auto
 }
 
+.portal .modal .inputs h3 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #9195ab;
+    margin: 0 auto
+}
+
+.portal .modal .inputs .register {
+    padding: 32px;
+}
+
 .portal .modal .inputs input {
     width: 100%;
     border-radius: 4px;
@@ -1062,11 +1199,91 @@ li:hover::after {
     border: none;
     margin: 8px 0;
     padding-left: 8px;
-    color: #fff
+    color: #fff;
+    height: 2rem
+}
+
+.portal .modal .inputs label {
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #9195ab;
+    margin-top: 16px;
+}
+
+.portal .modal .inputs .submit {
+    background: #467750;
+    box-shadow: none;
+    height: 3rem;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 1rem;
+    text-transform: uppercase;
 }
 
 .portal .modal .inputs .itext {
     height: 2rem;
+}
+
+.portal .modal .login h1 {
+    font-size: 24px;
+    color: #d1d0c5;
+    font-weight: 800;
+    margin: 0 auto
+}
+
+.portal .modal .login button {
+    background: #467750;
+    box-shadow: none;
+    height: 3rem;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+}
+
+.portal .modal .inputs .register .name {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 2rem;
+}
+
+.portal .modal .inputs .register .exotics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.portal .modal .inputs .radioinput {
+    display: grid;
+    vertical-align: none;
+    height: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 8px 0;
+}
+
+.portal .modal .inputs .radioinput .roption {
+    display: flex;
+    flex-direction: row;
+}
+
+.portal .modal .inputs .radioinput .roption input[type=radio] {
+    color: #00ffea;
+    height: 12px;
+    width: 12px;
+    margin-right: 12px;
+}
+
+.portal .modal .inputs .radioinput .roption label {
+    float: left;
+    font-weight: 100;
+    text-transform: none;
+    line-height: 100%;
+    margin: 8px 0
 }
 
 /* Extracted from hero.css */
@@ -1090,11 +1307,33 @@ li:hover::after {
     font-weight: 600;
 }
 
+.herobutton {
+    color: #f2f4fb;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #467750;
+    color: #e0e8e2
+}
+
+.herobutton:hover {
+    background-color: #e0e8e2;
+    color: #2c2e31
+}
+
 .homesect {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 40px;
     min-height: 460px;
+    text-align: center;
+    padding: 0 200px;
+    align-content: center;
 }
 
 .hsrev {
@@ -1104,34 +1343,87 @@ li:hover::after {
 .homesect div {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.homesect div img {
-    width: 80%;
-    height: auto;
+.homesect .image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #000;
+    height: 250px !important;
+    max-width: 90%;
+    overflow: hidden;
+    filter: drop-shadow(rgba(0, 0, 0, 0.16) 0px 32px 72px);
+}
+
+.homesect .image img {
+    position: absolute;
+    inset: 0px;
+    z-index: 1;
+    transform: scale(1.4);
+    width: 100%;
 }
 
 .homelistings {
     background: #D9EEE1;
     min-height: 300px !important;
     height: 300px !important;
+    color: #2c2e31;
 }
 
 .homesect div h1 {
-    font-weight: 600;
-    font-size: 36px;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.homesect div h3 {
+    font-weight: 400;
+    font-size: 22px;
 }
 
 .homeresources {
-    background: #FFF4A3
+    background: #FFF4A3;
+    color: #2c2e31;
 }
 
 .homecontact {
-    background: #96D4D4
+    background: #96D4D4;
+    color: #2c2e31;
 }
 
 .counselorsnote {
-    background: #323437
+    background: #323437;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.counselorsnote h1 {
+    font-weight: 800;
+    font-size: 42px;
+    text-align: center;
+}
+
+.counselorsnote h3 {
+    font-weight: 500;
+    font-size: 22px;
+    text-align: center;
+}
+
+@media (max-width: 982px) {
+    .homesect, .hsrev {
+        grid-template-columns: 1fr !important;
+    }
+
+    .homesect .image {
+        display: none;
+    }
 }
 
 /* Extracted from console.css */
@@ -1246,4 +1538,57 @@ li:hover::after {
     border: none;
     background-color: #467750;
     color: #ffffff
+}
+
+/* Extracted from articles.css */
+
+.article h1 {
+    font-size: 72px;
+    font-weight: 700;
+    color: #fff
+}
+
+.article h3 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #9195ab
+}
+
+.article p {
+    font-size: 18px;
+    font-weight: 400;
+    text-indent: 4em;
+    white-space: normal;
+    overflow-wrap: break-word;
+    color: #9195ab
+}
+
+.article {
+    margin: 40px auto 0px;
+    width: min(100%, 948px);
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    z-index: 1;
+    position: relative;
+}
+
+.article .splash {
+    width: 100%;
+    height: 250px !important;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    background: #000000;
+}
+
+.article .splash .container {
+    filter: blur(3px);
+    opacity: 0.7;
+    position: absolute;
+    inset: 0px;
+    transform: scale(1.4);
+    z-index: 1;
 }

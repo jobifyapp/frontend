@@ -2,9 +2,9 @@
 <html lang="en-us" style="overflow: hidden;">
     <head>
         <meta charset="utf-8">
-        <title>Jobify × Bridging talent to oppurtunity.</title>
+        <title>Jobify × Register</title>
         <!--FILL IN THE FAVICON-->
-        <link rel="icon" type="image/x-icon" sizes="32x32" href="">
+        <link rel="icon" type="image/x-icon" sizes="32x32" href="/static/img/logo.png">
         <meta name="author" content="Emerson Reinhard">
         <link rel="stylesheet" href="/static/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
@@ -15,14 +15,56 @@
     <body>
         <div id="root">
             <div class="portal">
-                <div class="modal">
+                <div class="modal" style="grid-template-columns: 1fr;">
                     <div class="inputs">
                         <h1>Create an account</h1>
-                        <form id="register">
-                            <input type="text" id="email">
+                        <form class="register" id="register">
+                            <div class="name" style="grid-template-columns: 1fr 1fr;">
+                                <div>
+                                    <label>Email</label>
+                                    <input type="text" id="email">
+                                </div>
+                                <div>
+                                    <label>Phone</label>
+                                    <input type="text" id="phone">
+                                </div>
+                            </div>
+                            <label>Password</label>
+                            <input type="password" id="password">
+                            <div class="name">
+                                <div>
+                                    <label>First Name</label>
+                                    <input type="text" id="first">
+                                </div>
+                                <div>
+                                    <label>M.I.</label>
+                                    <input type="text" id="middle">
+                                </div>
+                            </div>
+                            <label>Last Name</label>
+                            <input type="text" id="last">
+                            <label>Avatar (url)</label>
+                            <input type="text" id="avatar">
+                            <div class="exotics">
+                                <div>
+                                    <label>Date of Birth</label>
+                                    <input type="date" id="dob">
+                                </div>
+                                <div class="radioinput">
+                                    <div class="roption">
+                                        <input type="radio" name="t" id="1" value="1" class="radioinput radio">
+                                        <label for="student">Student</label>
+                                    </div>
+                                    <div class="roption">
+                                        <input type="radio" name="t" id="2" value="2" class="radioinput radio">
+                                        <label for="employer">Employer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" class="submit" value="Register">
+                            <a href="/login" style="color: #0000FF;">Already have an account?</a>
                         </form>
                     </div>
-                    <div class="login">test</div>
                 </div>
             </div>
         </div>

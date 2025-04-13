@@ -2,7 +2,7 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
-        <title>Jobify × Listings</title>
+        <title>Jobify × Your Jobs</title>
         <!--FILL IN THE FAVICON-->
         <link rel="icon" type="image/x-icon" sizes="32x32" href="/static/img/logo.png">
         <meta name="author" content="Emerson Reinhard">
@@ -336,28 +336,9 @@
                 </div>
             </div>
             <div class="listings">
-                <h1>Select a listing</h1>
-                <div class="filterbar">
-                    <div class="openmodal">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
-                    <div class="selected">
-                        <div class="note">
-                            <span>Try adding a filter to see options fit for you!</span>
-                        </div>
-                        <div class="option hidden">
-                            <span>NEW (4+)</span>
-                        </div>
-                        <div class="option hidden">
-                            <span>FAST FOOD (3+)</span>
-                        </div>
-                        <div class="option hidden">
-                            <span>VOLUNTEER (3+)</span>
-                        </div>
-                    </div>
-                </div>
+                <h1 id="header">Select a listing</h1>
                 <div class="options" id="options">
-                    <h5>Sorry, we couldn't find any listings that match your search queries :(</h5>
+                    <h5>Sorry, you don't have any jobs :(</h5>
                 </div>
                 <button class="post" id="post" onclick="openPostModal()">
                     <span>+</span>
@@ -432,7 +413,7 @@
             </footer>
         </div>
         <script src="/static/js/script.js"></script>
-        <script>window.onload = fetchListings([])</script>
+        <script>window.onload = fetchJobs()</script>
     </body>
 </html>
 
